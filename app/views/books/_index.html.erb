@@ -21,6 +21,17 @@
           <% end %>
         </td>
         <td><%= book.body %></td>
+        <td>
+            <% if book.favorited?(current_user) %>
+            <%= link_to book_favorite_path(book.id), method: :delete do %>
+            <span style="color:red;">❤︎</span>
+            <% end %>
+            <% else %>
+          　<%= link_to book_favorites_path(book.id), method: :post do %>
+            <span>❤︎</span>
+            <% end %>
+            <% end %>
+          </td>
       </tr>
     <% end %>
   </tbody>
