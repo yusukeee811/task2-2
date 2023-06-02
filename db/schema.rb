@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 2023_06_01_013505) do
     t.string "title"
     t.text "body"
     t.integer "user_id"
-    t.integer "book_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
