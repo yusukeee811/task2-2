@@ -18,7 +18,3 @@
     <% end %>
   </tbody>
 </table>
-<%= form_with(model:[book, book_comment], local: false, remote: true) do |f| %>
-  <%= f.text_area :comment, rows:'5', class: "w-100" %>
-  <%= f.submit "送信" %>
-<% end %>
