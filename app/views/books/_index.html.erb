@@ -24,7 +24,9 @@
           <td id="favorite_buttons_<%= book.id %>">
           <%= render 'favorites/favorite', book: book %>
         </td>
-        <td>コメント件数：<%= book.book_comments.count %></td>
+        <td class="book-comments-counter">
+          <%= render "book_comments/counter", book: book %>
+        </td>
       </tr>
     <% end %>
   </tbody>
