@@ -9,9 +9,7 @@
     <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>
       <%= render 'books/index', books: @books %>
-    </div>
-    <div class='col-md-8 offset-md-1'>
-      <%= render 'posts', today_books: @today_books, yesterday_books: @yesterday_books %>
+      <%= render 'posts', user: @user %>
     </div>
   </div>
 </div>

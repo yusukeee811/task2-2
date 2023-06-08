@@ -1,3 +1,46 @@
 <h2>投稿数の前日比・前週比</h2>
-<p>今日の投稿数: <%= today_books %></p>
-<p>前日の投稿数: <%= yesterday_books %></p>
+
+<table class='table table-bordered'>
+  <thead>
+    <tr>
+      <th>今日の投稿数</th>
+      <th>前日の投稿数</th>
+      <th>前日比</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= today_books = user.books.where(created_at: Date.today.all_day).count %></td>
+        <td><%= yesterday_books = user.books.where(created_at: Date.yesterday.all_day).count %></td>
+        <td>
+          <% if yesterday_books != 0 %>
+            <%= ((today_books - yesterday_books) / yesterday_books.to_f * 100).round %>%
+          <% else %>
+            0%
+          <% end %>
+        </td>
+      </tr>
+  </tbody>
+</table>
+<table class='table table-bordered'>
+  <thead>
+    <tr>
+      <th>今週の投稿数</th>
+      <th>前週の投稿数</th>
+      <th>前週比</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= thisweek_books = user.books.where(created_at: Date.current.beginning_of_week..Date.current.end_of_week).count %></td>
+        <td><%= lastweek_books = user.books.where(created_at: 1.week.ago.beginning_of_week..1.week.ago.end_of_week).count %></td>
+        <td>
+          <% if lastweek_books != 0 %>
+            <%= ((thisweek_books - lastweek_books) / lastweek_books.to_f * 100).round %>%
+          <% else %>
+            0%
+          <% end %>
+        </td>
+      </tr>
+  </tbody>
+</table>
