@@ -14,7 +14,7 @@
         <td><%= yesterday_books = user.books.where(created_at: Date.yesterday.all_day).count %></td>
         <td>
           <% if yesterday_books != 0 %>
-            <%= ((today_books - yesterday_books) / yesterday_books.to_f * 100).round %>%
+            <%= (today_books.to_f / yesterday_books.to_f * 100).round %>%
           <% else %>
             0%
           <% end %>
@@ -36,7 +36,7 @@
         <td><%= lastweek_books = user.books.where(created_at: 1.week.ago.beginning_of_week..1.week.ago.end_of_week).count %></td>
         <td>
           <% if lastweek_books != 0 %>
-            <%= ((thisweek_books - lastweek_books) / lastweek_books.to_f * 100).round %>%
+            <%= (thisweek_books.to_f / lastweek_books.to_f * 100).round %>%
           <% else %>
             0%
           <% end %>
