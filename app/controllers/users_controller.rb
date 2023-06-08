@@ -5,6 +5,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
+    @today_books = @user.books.where(created_at: Date.today.all_day).count
+    @yesterday_books = @user.books.where(created_at: Date.yesterday.all_day).count
   end
 
   def index
