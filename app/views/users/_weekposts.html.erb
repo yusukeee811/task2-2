@@ -1,0 +1,22 @@
+<h2>7日間分の投稿数</h2>
+<table class='table table-bordered'>
+  <thead>
+      <tr>
+        <% past_week_books.each do |date, _| %>
+        <th>
+          <% if (Date.current - date.to_date).to_i.zero? %>
+            今日
+          <% else %>
+            <%= "#{(Date.current - date.to_date).to_i}日前" %>
+          <% end %>
+        <% end %>
+        </th>
+    </thead>
+    <tbody>
+      <tr>
+        <% past_week_books.each do |_, count| %>
+        <td><%= count %></td>
+        <% end %>
+      </tr>
+    </tbody>
+</table>
