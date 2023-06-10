@@ -1,1 +1,44 @@
-<%= line_chart past_week_books %>
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  $(document).on('turbolinks:load', function() {
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
+        datasets: [{
+          label: '投稿した本の数',
+          data: <%= past_week_books.values %>,
+          tension: 0.4,
+        }]
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: '7日間の投稿数の比較'
+          }
+        },
+        scales: {
+          x: {
+            display: true
+          },
+          y: {
+            display: true,
+              min: 0,
+              max: 10,
+              ticks: {
+                stepSize: 1,
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
