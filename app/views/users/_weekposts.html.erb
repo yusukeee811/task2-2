@@ -2,20 +2,20 @@
 <table class='table table-bordered'>
   <thead>
       <tr>
-        <% past_week_books.each do |date, _| %>
+        <% past_week_books.each do |data| %>
         <th>
-          <% if (Date.current - date.to_date).to_i.zero? %>
+          <% if (Date.current - data[:date]).to_i.zero? %>
             今日
           <% else %>
-            <%= "#{(Date.current - date.to_date).to_i}日前" %>
+            <%= "#{(Date.current - data[:date]).to_i}日前" %>
           <% end %>
         <% end %>
         </th>
     </thead>
     <tbody>
       <tr>
-        <% past_week_books.each do |_, count| %>
-        <td><%= count %></td>
+        <% past_week_books.each do |data| %>
+        <td><%= data[:count] %></td>
         <% end %>
       </tr>
     </tbody>

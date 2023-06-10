@@ -5,11 +5,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
-    @past_week_books = {}
+    @past_week_books = []
     6.downto(0) do |n|
       date = n.days.ago.to_date
       count = @user.books.where(created_at: date.all_day).count
-      @past_week_books[date] = count
+      @past_week_books << { date: date, count: count }
     end
   end
 
