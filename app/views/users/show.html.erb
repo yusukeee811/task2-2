@@ -12,6 +12,15 @@
       <%= render 'posts', user: @user %>
       <%= render 'weekposts', past_week_books: @past_week_books %>
       <%= render 'chart', past_week_books: @past_week_books %>
+
+      <%= render 'search', user: @user %>
+
+      <div id="search_result">
+        <% if @search_book.present? %>
+          <%= render 'search_result', search_book: @search_book %>
+        <% end %>
+      </div>
+
     </div>
   </div>
 </div>
